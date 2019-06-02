@@ -33,6 +33,55 @@ export default class App extends Component {
     );
   };
 
+  configureSearch = () => {
+    let { url, limit, get } = this.state;
+
+    if (url && get && limit) {
+      this.search();
+    } else {
+      this.loadAPI()
+        .then(
+          ({
+            axios: { get },
+            endpoints: {
+              default: { GetSearchResults }
+            },
+            config: {
+              default: {
+                search: { limit }
+              }
+            }
+          }) => {
+            this.setState(
+              {
+                url: GetSearchResults,
+                limit,
+                get
+              },
+              () => this.search()
+            );
+          }
+        )
+        .catch(err => console.log(err));
+    }
+  };
+
+  loadAPI = () => {
+    return Promise.all([
+      import("axios"),
+      import("./utils/endpoints"),
+      import("./utils/config")
+    ]).then(([axios, endpoints, config]) => {
+      return {
+        axios,
+        endpoints,
+        config
+      };
+    });
+  };
+
+  
+
   render() {
     const { searchTerm, results, isLoadLocked } = this.state;
 
