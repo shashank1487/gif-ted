@@ -112,6 +112,16 @@ export default class App extends Component {
             changeHandler={this.changeHandler}
             searchHandler={this.searchHandler}
           />
+          <div className="row">
+            <div className="header">
+              <h3>
+                <span className="p-2">
+                  <i className="fa fa-search" />
+                </span>
+                <span>Search Results</span>
+              </h3>
+            </div>
+          </div>
         </div>
       </Fragment>
     );
