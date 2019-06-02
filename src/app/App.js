@@ -2,7 +2,9 @@ import React, { Component, Fragment } from "react";
 import SearchBar from "./components/search/search-bar";
 import ResultItem from "./components/results/result-item/result-item";
 import InfiniteScroll from "react-infinite-scroller";
+
 import "./app.scss";
+import spinnerImg from "./assets/images/spinner.gif";
 
 export default class App extends Component {
   state = {
@@ -104,7 +106,7 @@ export default class App extends Component {
 
     const loader = (
       <div className="text-center">
-        <img src="/images/spinner.gif" alt="spinner" className="spinner" />
+        <img src={spinnerImg} alt="spinner" className="spinner" />
       </div>
     );
 
