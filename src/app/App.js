@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import SearchBar from "./components/search/search-bar";
-
+import ResultItem from './components/results/result-item/result-item';
 import "./app.scss";
 
 export default class App extends Component {
@@ -98,8 +98,14 @@ export default class App extends Component {
     });
   };
 
+  renderItems = () => {
+    const { results } = this.state;
+
+    return results.map((result, idx) => <ResultItem {...result} key={idx} />);
+  };
+
   render() {
-    const { searchTerm } = this.state;
+    const { searchTerm, results } = this.state;
 
     return (
       <Fragment>
@@ -121,6 +127,7 @@ export default class App extends Component {
                 <span>Search Results</span>
               </h3>
             </div>
+            {results.length > 0 && this.renderItems()}
           </div>
         </div>
       </Fragment>
