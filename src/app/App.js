@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import SearchBar from "./components/search/search-bar";
-import ResultItem from './components/results/result-item/result-item';
+import ResultItem from "./components/results/result-item/result-item";
+import InfiniteScroll from "react-infinite-scroller";
 import "./app.scss";
 
 export default class App extends Component {
@@ -99,9 +100,26 @@ export default class App extends Component {
   };
 
   renderItems = () => {
-    const { results } = this.state;
+    const { results, isLoadLocked } = this.state;
 
-    return results.map((result, idx) => <ResultItem {...result} key={idx} />);
+    const loader = (
+      <div className="text-center">
+        <img src="/images/spinner.gif" alt="spinner" className="spinner" />
+      </div>
+    );
+
+    return (
+      <InfiniteScroll
+        pageStart={0}
+        loadMore={this.search}
+        hasMore={!isLoadLocked}
+        loader={loader}
+      >
+        {results.map((result, idx) => (
+          <ResultItem {...result} key={idx} />
+        ))}
+      </InfiniteScroll>
+    );
   };
 
   render() {
