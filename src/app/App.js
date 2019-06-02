@@ -1,10 +1,13 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, lazy, Suspense } from "react";
 import SearchBar from "./components/search/search-bar";
-import ResultItem from "./components/results/result-item/result-item";
-import InfiniteScroll from "react-infinite-scroller";
 
 import "./app.scss";
 import spinnerImg from "./assets/images/spinner.gif";
+
+const InfiniteScroll = lazy(() => import("react-infinite-scroller"));
+const ResultItem = lazy(() =>
+  import("./components/results/result-item/result-item")
+);
 
 export default class App extends Component {
   state = {
@@ -111,16 +114,18 @@ export default class App extends Component {
     );
 
     return (
-      <InfiniteScroll
-        pageStart={0}
-        loadMore={this.search}
-        hasMore={!isLoadLocked}
-        loader={loader}
-      >
-        {results.map((result, idx) => (
-          <ResultItem {...result} key={idx} />
-        ))}
-      </InfiniteScroll>
+      <Suspense fallback={loader}>
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={this.search}
+          hasMore={!isLoadLocked}
+          loader={loader}
+        >
+          {results.map((result, idx) => (
+            <ResultItem {...result} key={idx} />
+          ))}
+        </InfiniteScroll>
+      </Suspense>
     );
   };
 
