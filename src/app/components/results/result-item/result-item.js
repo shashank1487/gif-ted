@@ -1,5 +1,6 @@
 import React from "react";
 
+import './result-item.scss';
 const ResultItem = props => {
   const { id, images } = props;
 
