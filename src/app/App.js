@@ -10,7 +10,8 @@ export default class App extends Component {
     offset: 0,
     limit: "",
     get: null,
-    isLoadLocked: false
+    isLoadLocked: false,
+    results: []
   };
 
   changeHandler = ({ target: { value } }) => {
@@ -19,14 +20,33 @@ export default class App extends Component {
     });
   };
 
+  searchHandler = () => {
+    this.setState(
+      {
+        results: [],
+        offset: 0,
+        isLoadLocked: false
+      },
+      () => {
+        this.configureSearch();
+      }
+    );
+  };
+
   render() {
+    const { searchTerm, results, isLoadLocked } = this.state;
+
     return (
       <Fragment>
         <div className="page-header mb-3">
           <h2 className="text-center text-white header-text">GIFted</h2>
         </div>
         <div className="container py-3">
-          <SearchBar />
+          <SearchBar
+            searchTerm={searchTerm}
+            changeHandler={this.changeHandler}
+            searchHandler={this.searchHandler}
+          />
         </div>
       </Fragment>
     );
