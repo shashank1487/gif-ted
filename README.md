@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Description
+
+This project searches for gif's againt the giphy api and returns 10 results at a time.
+
+The code is customized to run in browsers, mobiles and tablets aka its responsive.
+
+The gif's can be played and paused using a gif player react component. Also the gif's are automatically paused when they go out of the view port area.
+
 ## Available Scripts
 
 In the project directory, you can run:
