@@ -1,8 +1,22 @@
 .page-header {
   height: 10vh;
-  background-color: #8DC53F;
+  background-color: #8dc53f;
 
   .header-text {
     line-height: 10vh;
+  }
+}
+
+.container {
+  .results {
+    margin: 20px 0;
+
+    .header {
+      padding: 10px 0;
+      font-weight: normal;
+      color: #029444;//#33495d;
+      width: 100%;
+      text-align: center;
+    }
   }
 }

@@ -112,7 +112,7 @@ export default class App extends Component {
             changeHandler={this.changeHandler}
             searchHandler={this.searchHandler}
           />
-          <div className="row">
+          <div className="row results">
             <div className="header">
               <h3>
                 <span className="p-2">
