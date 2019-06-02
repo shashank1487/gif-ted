@@ -4,6 +4,21 @@ import SearchBar from "./components/search/search-bar";
 import "./app.scss";
 
 export default class App extends Component {
+  state = {
+    searchTerm: "",
+    url: "",
+    offset: 0,
+    limit: "",
+    get: null,
+    isLoadLocked: false
+  };
+
+  changeHandler = ({ target: { value } }) => {
+    this.setState({
+      searchTerm: value
+    });
+  };
+
   render() {
     return (
       <Fragment>
