@@ -66,6 +66,24 @@ export default class App extends Component {
     }
   };
 
+  search = () => {
+    let { url, searchTerm, limit, offset, get, results } = this.state;
+    let updatedUrl = `${url}&q=${searchTerm}&limit=${limit}&offset=${offset}`;
+    get(updatedUrl)
+      .then(res => {
+        const currentResultsLength = results.length + res.data.pagination.count;
+        const total = res.data.pagination.total_count;
+        this.setState({
+          results: [...results, ...res.data.data],
+          offset: offset + limit,
+          isLoadLocked: currentResultsLength >= total
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   loadAPI = () => {
     return Promise.all([
       import("axios"),
@@ -80,10 +98,8 @@ export default class App extends Component {
     });
   };
 
-  
-
   render() {
-    const { searchTerm, results, isLoadLocked } = this.state;
+    const { searchTerm } = this.state;
 
     return (
       <Fragment>
