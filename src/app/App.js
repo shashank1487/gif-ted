@@ -77,6 +77,7 @@ export default class App extends Component {
     let updatedUrl = `${url}&q=${searchTerm}&limit=${limit}&offset=${offset}`;
     get(updatedUrl)
       .then(res => {
+        debugger;
         const currentResultsLength = results.length + res.data.pagination.count;
         const total = res.data.pagination.total_count;
         this.setState({
