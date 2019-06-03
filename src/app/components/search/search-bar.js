@@ -13,6 +13,7 @@ const SearchBar = props => {
           className="form-control"
           value={searchTerm}
           onChange={changeHandler}
+          placeholder="search"
         />
       </div>
       <div className="col-md-2 col-lg-1 col-2">

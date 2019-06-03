@@ -19,6 +19,10 @@ class GifWrapper extends Component {
     });
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll');
+  }
+
   isInViewport = el => {
     var top = el.offsetTop;
     var left = el.offsetLeft;

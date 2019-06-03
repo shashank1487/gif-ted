@@ -22,6 +22,5 @@ describe("The gif wrapper component", () => {
 
   it("should render GifPlayer component", () => {
     expect(app.find("GifPlayerContainer").exists()).toBeTruthy();
-    console.log(app.debug())
   });
 });

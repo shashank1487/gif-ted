@@ -6,7 +6,22 @@ This project searches for gif's againt the giphy api and returns 10 results at a
 
 The code is customized to run in browsers, mobiles and tablets aka its responsive.
 
+Infinite scrolling is implemented to retrieve the next 10 documents unless otherwise there are no documents left.
+
 The gif's can be played and paused using a gif player react component. Also the gif's are automatically paused when they go out of the view port area.
+
+## Technologies
+
+React and Bootstrap for development and jest and enzyme for testing.
+
+## Steps to run
+1. Run "npm install" to download and install the dependencies required by the application.
+2. Run "npm run start" to run the application. The application will be started at port 3000.
+3. Enter the search term in the textbox provided and hit the search button.
+4. 10 gif's will be displayed in three columns and more can be loaded on scrolling.
+5. Click on the gif icon to play the gif and click again on the same gif to stop the gif.
+6. The gif's will be automatically stopped once they go out of the view port area.
+7. Run "npm run test" to run the unit test cases.
 
 ## Available Scripts
 
