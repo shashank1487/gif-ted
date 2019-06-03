@@ -14,7 +14,7 @@
     .header {
       padding: 10px 0;
       font-weight: normal;
-      color: #029444;//#33495d;
+      color: #029444; //#33495d;
       width: 100%;
       text-align: center;
     }
@@ -27,4 +27,8 @@
       font-size: 20px;
     }
   }
+}
+
+.spinner {
+  width: 200px;
 }
