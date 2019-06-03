@@ -109,7 +109,7 @@ export default class App extends Component {
     const { results, isLoadLocked } = this.state;
 
     const loader = (
-      <div className="text-center">
+      <div className="text-center" key={0}>
         <img src={spinnerImg} alt="spinner" className="spinner" />
       </div>
     );

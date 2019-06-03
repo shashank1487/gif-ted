@@ -1,26 +1,28 @@
 import React, { Component, createRef } from "react";
 import GifPlayer from "react-gif-player";
 
-import './gif-wrapper.css';
+import "./gif-wrapper.css";
 
 class GifWrapper extends Component {
   gifRef = createRef();
-  
-  componentDidMount = () => {
-    window.addEventListener("scroll", e => {
-      if (this.gifRef.current) {
-        let gif_img = document.querySelector(
-          `img[src="${this.gifRef.current.props.gif}"]`
-        );
-        if (gif_img && !this.isInViewport(gif_img)) {
-          this.pauseGif();
-        }
+
+  scrollHandler = e => {
+    if (this.gifRef.current) {
+      let gif_img = document.querySelector(
+        `img[src="${this.gifRef.current.props.gif}"]`
+      );
+      if (gif_img && !this.isInViewport(gif_img)) {
+        this.pauseGif();
       }
-    });
-  }
+    }
+  };
+
+  componentDidMount = () => {
+    window.addEventListener("scroll", this.scrollHandler);
+  };
 
   componentWillUnmount() {
-    window.removeEventListener('scroll');
+    window.removeEventListener("scroll", this.scrollHandler);
   }
 
   isInViewport = el => {
@@ -54,7 +56,7 @@ class GifWrapper extends Component {
         className="gif"
       />
     );
-  }
+  };
 }
 
 export default GifWrapper;
