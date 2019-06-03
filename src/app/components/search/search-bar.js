@@ -1,4 +1,5 @@
 import React from "react";
+import { SEARCH } from "../../utils/constants";
 
 import "./search-bar.scss";
 const SearchBar = props => {
@@ -16,7 +17,7 @@ const SearchBar = props => {
       </div>
       <div className="col-md-2 col-lg-1 col-2">
         <button className="btn btn-search" onClick={searchHandler}>
-          Search
+          {SEARCH}
         </button>
       </div>
     </div>

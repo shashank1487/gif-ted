@@ -1,5 +1,6 @@
 import React, { Component, Fragment, lazy, Suspense } from "react";
 import SearchBar from "./components/search/search-bar";
+import { SEARCH_RESULTS, NO_RECORDS_MESSAGE } from "./utils/constants";
 
 import "./app.scss";
 import spinnerImg from "./assets/images/spinner.gif";
@@ -150,13 +151,13 @@ export default class App extends Component {
                 <span className="p-2">
                   <i className="fa fa-search" />
                 </span>
-                <span>Search Results</span>
+                <span>{SEARCH_RESULTS}</span>
               </h3>
             </div>
             {results.length > 0 && this.renderItems()}
             {isLoadLocked ? (
               <div className="no_records">
-                <span>No more gifs to fetch</span>
+                <span>{NO_RECORDS_MESSAGE}</span>
               </div>
             ) : null}
           </div>
