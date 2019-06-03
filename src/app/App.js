@@ -131,7 +131,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { searchTerm, results } = this.state;
+    const { searchTerm, results, isLoadLocked } = this.state;
 
     return (
       <Fragment>
@@ -154,6 +154,11 @@ export default class App extends Component {
               </h3>
             </div>
             {results.length > 0 && this.renderItems()}
+            {isLoadLocked ? (
+              <div className="no_records">
+                <span>No more gifs to fetch</span>
+              </div>
+            ) : null}
           </div>
         </div>
       </Fragment>
